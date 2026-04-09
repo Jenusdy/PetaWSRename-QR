@@ -1,10 +1,13 @@
 import re
 import cv2
+from pathlib import Path
 import pytesseract
-from config.constants import TESSERACT_CMD
 
+BASE_DIR = Path(__file__).resolve().parent
 
-pytesseract.pytesseract.tesseract_cmd = TESSERACT_CMD
+pytesseract.pytesseract.tesseract_cmd = str(
+    BASE_DIR / "vendor" / "tesseract" / "tesseract.exe"
+)
 
 
 class OCRService:

@@ -45,14 +45,13 @@ class MainWindow(QWidget):
         self.process_btn = QPushButton('Proses', clicked=self.process_images)
 
         ocr_radio = QRadioButton('OCR')
-        qr_radio = QRadioButton('QR-Code')
-
         ocr_radio.toggled.connect(lambda c: c and self.set_method(METHOD_OCR))
-        qr_radio.toggled.connect(lambda c: c and self.set_method(METHOD_QR))
-
         layout.addWidget(QLabel('Metode'), 0, 0)
         layout.addWidget(ocr_radio, 0, 1)
-        layout.addWidget(qr_radio, 0, 2)
+        
+        # qr_radio = QRadioButton('QR-Code')
+        # qr_radio.toggled.connect(lambda c: c and self.set_method(METHOD_QR))
+        # layout.addWidget(qr_radio, 0, 2)
 
         layout.addWidget(QLabel('Folder Input'), 1, 0)
         layout.addWidget(self.dir_input, 1, 1)

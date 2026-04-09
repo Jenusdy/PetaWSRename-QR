@@ -1,0 +1,22 @@
+import re
+import cv2        
+
+img = cv2.imread("SCAN_018.jpg")
+height, width = img.shape[:2]
+
+if height > width:
+    img = cv2.resize(img, (800, 1280))
+    h, w = img.shape[:2]
+    crop_h = round(h * 0.05)
+    crop_w = round(w * 0.70)
+else:
+    img = cv2.resize(img, (1280, 800))
+    h, w = img.shape[:2]
+    crop_h = round(h * 0.05)
+    crop_w = round(w * 0.80)
+
+cropped = img[0:crop_h, crop_w:w - 1]
+
+cv2.imwrite("cropped_output.jpg", cropped)
+
+print("Saved cropped image.")
